@@ -84,14 +84,14 @@ public class EmployeeServiceImpl implements EmployeeService {
         //设置密码,默认为123456
         employee.setPassword(DigestUtils.md5DigestAsHex(PasswordConstant.DEFAULT_PASSWORD.getBytes()));
 
-        //设置当前记录的创建时间和修改时间
+       /* //设置当前记录的创建时间和修改时间
         employee.setCreateTime(LocalDateTime.now());
         employee.setUpdateTime(LocalDateTime.now());
 
         //设置当前记录创建人id和修改人id
         //BaseContext里面是ThreadLocal方法 线程隔离，为每个线程提供单独一份存储空间，具有线程隔离的效果，只有在线程内才能获取到对应的值
         employee.setCreateUser(BaseContext.getCurrentId());
-        employee.setUpdateUser(BaseContext.getCurrentId());
+        employee.setUpdateUser(BaseContext.getCurrentId());*/
 
         employeeMapper.insert(employee);
     }
@@ -146,8 +146,8 @@ public class EmployeeServiceImpl implements EmployeeService {
         Employee employee = new Employee();
         //对象的属性拷贝
         BeanUtils.copyProperties(employeeDTO,employee);
-        employee.setUpdateTime(LocalDateTime.now());
-        employee.setUpdateUser(BaseContext.getCurrentId());
+       /* employee.setUpdateTime(LocalDateTime.now());
+        employee.setUpdateUser(BaseContext.getCurrentId());*/
         employeeMapper.update(employee);
     }
 }
